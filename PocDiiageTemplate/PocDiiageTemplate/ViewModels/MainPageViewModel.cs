@@ -15,5 +15,15 @@ namespace PocDiiageTemplate.ViewModels
         {
             Title = "Main Page";
         }
+        
+        private DelegateCommand _navigateCommand;
+
+        public DelegateCommand NavigateCommand =>
+            _navigateCommand ?? (_navigateCommand = new DelegateCommand(ExecutiveNavigateCommand));
+
+        async void ExecutiveNavigateCommand()
+        {
+            await NavigationService.NavigateAsync("UserPage");
+        }
     }
 }
